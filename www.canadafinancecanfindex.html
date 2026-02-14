@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Hello World!</h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#C8102E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CANFIN">
+<title>CANADA FINANCE (CANFIN)</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,{}">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --red: #C8102E;
+  --red-dark: #A00D24;
+  --red-light: #F8D7DC;
+  --white: #FFFFFF;
+  --blue: #1A5DAB;
+  --blue-light: #E8F0FE;
+  --blue-dark: #0E3F7A;
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #616161;
+  --gray-800: #424242;
+  --gray-900: #212121;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg: var(--white);
+  --bg-card: var(--white);
+  --bg-input: var(--gray-50);
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --border-color: var(--gray-200);
+}
+html.dark {
+  --bg: #0F1117;
+  --bg-card: #1A1D27;
+  --bg-input: #242734;
+  --text-primary: #F0F0F5;
+  --text-secondary: #9CA3B0;
+  --border-color: #2E3142;
+  --gray-50: #1A1D27;
+  --gray-100: #242734;
+  --gray-200: #2E3142;
+  --gray-300: #3A3E52;
+  --red-light: #3D1520;
+  --blue-light: #162A4A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.page { display: none; min-height: 100vh; animation: fadeUp 0.5s ease; }
+.page.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.hero {
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 50%, #7A0A1A 100%);
+  padding: 40px 20px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  animation: float 8s ease-in-out infinite;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--bg);
+  border-radius: 40px 40px 0 0;
+}
+.logo-container {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+.logo-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  background: var(--white);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.logo-icon svg { width: 48px; height: 48px; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+  line-height: 1.2;
+}
+.hero h1 span { color: #FFD700; }
+.hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+.container { max-width: 520px; margin: 0 auto; padding: 0 16px; }
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.card:hover { box-shadow: var(--shadow-md); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-input);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  transition: var(--transition);
+  outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(26,93,171,0.15);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--gray-400); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-select { cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239E9E9E' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-error {
+  font-size: 12px;
+  color: var(--red);
+  margin-top: 4px;
+  display: none;
+}
+.form-error.visible { display: block; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  width: 100%;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(200,16,46,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(200,16,46,0.4); }
+.btn-primary:active { transform: translateY(0); }
+.btn-blue {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(26,93,171,0.3);
+}
+.btn-blue:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(26,93,171,0.4); }
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+}
+.btn-outline:hover { background: var(--blue-light); }
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+.btn-install {
+  background: linear-gradient(135deg, #1A1D27 0%, #2E3142 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+html.dark .btn-install {
+  background: linear-gradient(135deg, var(--white) 0%, var(--gray-300) 100%);
+  color: var(--gray-900);
+}
+.btn-install:hover { transform: translateY(-2px); }
+.btn-sm { padding: 10px 20px; font-size: 14px; width: auto; }
+.btn-accept { background: #16A34A; color: white; }
+.btn-accept:hover { background: #15803D; }
+.btn-refuse { background: var(--red); color: white; }
+.btn-refuse:hover { background: var(--red-dark); }
+.btn-group { display: flex; gap: 10px; margin-top: 12px; }
+.btn-group .btn { flex: 1; }
+.welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--red-light);
+  color: var(--red);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+html.dark .welcome-badge { color: #FF6B81; }
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+.feature-item {
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+.feature-item:hover { border-color: var(--blue); transform: translateY(-2px); }
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.feature-item h4 { font-size: 13px; font-weight: 600; }
+.category-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.category-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: var(--transition);
+  aspect-ratio: 1;
+}
+.category-card.selected { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,93,171,0.2); }
+.category-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.category-card svg { width: 100%; height: 100%; display: block; }
+.category-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.category-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: var(--blue);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+}
+.category-card.selected .category-check { display: flex; }
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 20px 0 24px;
+}
+.step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--gray-200);
+  color: var(--gray-500);
+  transition: var(--transition);
+  position: relative;
+  z-index: 1;
+}
+.step-dot.active { background: var(--blue); color: white; }
+.step-dot.done { background: #16A34A; color: white; }
+.step-line { width: 40px; height: 3px; background: var(--gray-200); transition: var(--transition); }
+.step-line.done { background: #16A34A; }
+.amount-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.amount-option {
+  padding: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--bg-input);
+}
+.amount-option:hover { border-color: var(--blue); }
+.amount-option.selected { border-color: var(--blue); background: var(--blue-light); }
+.amount-option .amount { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.amount-option .fee { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.payment-info {
+  background: var(--blue-light);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin: 16px 0;
+}
+.payment-info h4 { color: var(--blue); font-size: 14px; margin-bottom: 8px; }
+.payment-number {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+.payment-number span {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+}
+.copy-btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: var(--transition);
+}
+.copy-btn:hover { background: var(--blue-dark); }
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.status-pending { background: #FEF3C7; color: #92400E; }
+.status-accepted { background: #D1FAE5; color: #065F46; }
+.status-refused { background: #FEE2E2; color: #991B1B; }
+html.dark .status-pending { background: #422006; color: #FDE68A; }
+html.dark .status-accepted { background: #052E16; color: #6EE7B7; }
+html.dark .status-refused { background: #450A0A; color: #FCA5A5; }
+.admin-request {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+.admin-request:hover { box-shadow: var(--shadow-md); }
+.admin-request h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.admin-request p { font-size: 13px; color: var(--text-secondary); margin-bottom: 3px; }
+.admin-request .req-detail { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.admin-request .tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  gap: 4px;
+}
+.nav-item i { font-size: 20px; transition: var(--transition); }
+.nav-item.active { color: var(--red); }
+.nav-item.active i { color: var(--red); }
+.page-content { padding-bottom: 80px; }
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+.toast {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.4s ease;
+  min-width: 250px;
+  font-size: 14px;
+}
+.toast.success { border-left: 4px solid #16A34A; }
+.toast.error { border-left: 4px solid var(--red); }
+.toast.info { border-left: 4px solid var(--blue); }
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9998;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  text-align: center;
+}
+.modal h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 10px; }
+.modal p { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5; }
+.user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+}
+.user-info { display: flex; align-items: center; gap: 12px; }
+.user-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 16px;
+}
+.user-name { font-weight: 600; font-size: 15px; }
+.user-email { font-size: 12px; color: var(--text-secondary); }
+.logout-btn {
+  background: none; border: none; color: var(--red);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  padding: 8px 12px; border-radius: 6px;
+  transition: var(--transition);
+}
+.logout-btn:hover { background: var(--red-light); }
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 16px 0; color: var(--text-secondary); font-size: 13px;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border-color);
+}
+.tab-bar { display: flex; gap: 4px; margin-bottom: 20px; background: var(--bg-input); border-radius: var(--radius-sm); padding: 4px; }
+.tab-btn {
+  flex: 1; padding: 10px; border: none; background: none; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 600; color: var(--text-secondary);
+  border-radius: 6px; cursor: pointer; transition: var(--transition);
+}
+.tab-btn.active { background: var(--bg-card); color: var(--text-primary); box-shadow: var(--shadow-sm); }
+.empty-state { text-align: center; padding: 40px 20px; }
+.empty-state i { font-size: 48px; color: var(--gray-300); margin-bottom: 16px; }
+.empty-state h4 { font-size: 16px; color: var(--text-secondary); margin-bottom: 8px; }
+.empty-state p { font-size: 13px; color: var(--gray-400); }
+.admin-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;
+}
+.stat-card {
+  background: var(--bg-input); border-radius: var(--radius-sm);
+  padding: 14px; text-align: center; border: 1px solid var(--border-color);
+}
+.stat-card .stat-num { font-size: 24px; font-weight: 700; }
+.stat-card .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+.stat-card.pending .stat-num { color: #D97706; }
+.stat-card.accepted .stat-num { color: #16A34A; }
+.stat-card.refused .stat-num { color: var(--red); }
+.maple-leaf { display: inline-block; }
+@media (max-width: 380px) {
+  .hero h1 { font-size: 24px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .category-cards { grid-template-columns: 1fr 1fr; }
+  .amount-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ============ PAGE: WELCOME ============ -->
+<div class="page active" id="pageWelcome">
+  <div class="hero">
+    <div class="logo-container">
+      <div class="logo-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4 L26 14 L30 10 L28 18 L36 16 L30 22 L38 24 L30 26 L36 32 L28 30 L30 38 L26 34 L24 44 L22 34 L18 38 L20 30 L12 32 L18 26 L10 24 L18 22 L12 16 L20 18 L18 10 L22 14 Z" fill="#C8102E"/>
+          <rect x="22" y="28" width="4" height="16" rx="1" fill="#8B4513"/>
+        </svg>
+      </div>
+      <h1>CANADA <span>FINANCE</span></h1>
+      <p>Chaque projet mérite une chance. Nous sommes là pour vous accompagner.</p>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="container" style="margin-top:-10px;">
+      <div class="card" style="text-align:center;">
+        <div class="welcome-badge">
+          <span class="maple-leaf">🍁</span> Bienvenue sur CANFIN
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:8px;">
+          Bienvenue sur CANADA FINANCE (CANFIN)
+        </h3>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.6;">
+          Aide financière pour vos projets personnels, voyages au Canada pour le travail, études, commerce ou besoins quotidiens.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon" style="background:var(--red-light);"><span>💼</span></div>
+          <h4>Travail</h4>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" style="background:var(--blue-light);"><span>🎓</span></div>
+          <h4>Études</h4>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" style="background:#FEF3C7;"><span>🏪</span></div>
+          <h4>Commerce</h4>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon" style="background:#D1FAE5;"><span>✈️</span></div>
+          <h4>Voyage</h4>
+        </div>
+      </div>
+
+      <a href="https://wa.me/2250554166574" target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-bottom:12px;">
+        <i class="fa-brands fa-whatsapp"></i> Service Client WhatsApp
+      </a>
+
+      <button class="btn btn-primary" onclick="navigateTo('pageAuth')">
+        <i class="fa-solid fa-arrow-right"></i> Commencer
+      </button>
+
+      <div style="height:16px;"></div>
+
+      <button class="btn btn-install" id="installBtn" onclick="installApp()">
+        <i class="fa-solid fa-download"></i> Installer l'application CANFIN
+      </button>
+
+      <div style="text-align:center;margin:20px 0;">
+        <button onclick="navigateTo('pageAdminLogin')" style="background:none;border:none;color:var(--text-secondary);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:underline;">
+          Accès Administrateur
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE: AUTH ============ -->
+<div class="page" id="pageAuth">
+  <div style="padding:20px 0;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div class="logo-icon" style="width:60px;height:60px;margin:0 auto 12px;">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px;">
+            <path d="M24 4 L26 14 L30 10 L28 18 L36 16 L30 22 L38 24 L30 26 L36 32 L28 30 L30 38 L26 34 L24 44 L22 34 L18 38 L20 30 L12 32 L18 26 L10 24 L18 22 L12 16 L20 18 L18 10 L22 14 Z" fill="#C8102E"/>
+            <rect x="22" y="28" width="4" height="16" rx="1" fill="#8B4513"/>
+          </svg>
+        </div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:24px;">CANFIN</h2>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchAuthTab('login')">Connexion</button>
+        <button class="tab-btn" onclick="switchAuthTab('register')">Inscription</button>
+      </div>
+
+      <!-- Login -->
+      <div id="authLogin" class="card">
+        <h3 class="section-title">Se connecter</h3>
+        <p class="section-subtitle">Accédez à votre espace personnel</p>
+        <div class="form-group">
+          <label class="form-label">Email ou Téléphone</label>
+          <input type="text" class="form-input" id="loginEmail" placeholder="email@exemple.com ou +225...">
+          <div class="form-error" id="loginEmailErr">Ce champ est obligatoire</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mot de passe</label>
+          <input type="password" class="form-input" id="loginPassword" placeholder="Votre mot de passe">
+          <div class="form-error" id="loginPasswordErr">Ce champ est obligatoire</div>
+        </div>
+        <button class="btn btn-primary" onclick="handleLogin()">
+          <i class="fa-solid fa-right-to-bracket"></i> Connexion
+        </button>
+      </div>
+
+      <!-- Register -->
+      <div id="authRegister" class="card" style="display:none;">
+        <h3 class="section-title">Créer un compte</h3>
+        <p class="section-subtitle">Rejoignez CANFIN en quelques instants</p>
+        <div class="form-group">
+          <label class="form-label">Email ou Téléphone</label>
+          <input type="text" class="form-input" id="regEmail" placeholder="email@exemple.com ou +225...">
+          <div class="form-error" id="regEmailErr">Ce champ est obligatoire</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mot de passe</label>
+          <input type="password" class="form-input" id="regPassword" placeholder="Créez un mot de passe (min. 6 caractères)">
+          <div class="form-error" id="regPasswordErr">Minimum 6 caractères requis</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirmer le mot de passe</label>
+          <input type="password" class="form-input" id="regPasswordConfirm" placeholder="Confirmez votre mot de passe">
+          <div class="form-error" id="regPasswordConfirmErr">Les mots de passe ne correspondent pas</div>
+        </div>
+        <button class="btn btn-primary" onclick="handleRegister()">
+          <i class="fa-solid fa-user-plus"></i> Créer mon compte
+        </button>
+      </div>
+
+      <button class="btn btn-outline" style="margin-top:12px;" onclick="navigateTo('pageWelcome')">
+        <i class="fa-solid fa-arrow-left"></i> Retour
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE: DASHBOARD ============ -->
+<div class="page" id="pageDashboard">
+  <div class="user-header">
+    <div class="user-info">
+      <div class="user-avatar" id="dashAvatar">U</div>
+      <div>
+        <div class="user-name" id="dashUserName">Utilisateur</div>
+        <div class="user-email" id="dashUserEmail">email@exemple.com</div>
+      </div>
+    </div>
+    <button class="logout-btn" onclick="handleLogout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Déconnexion
+    </button>
+  </div>
+  <div class="page-content">
+    <div class="container" style="padding-top:16px;">
+      <div class="card" style="text-align:center;background:linear-gradient(135deg,var(--red),var(--red-dark));color:white;border:none;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:20px;margin-bottom:6px;">Espace Personnel</h3>
+        <p style="opacity:0.85;font-size:14px;">Gérez vos demandes d'aide financière</p>
+      </div>
+
+      <button class="btn btn-blue" onclick="navigateTo('pageForm')" style="margin-bottom:12px;">
+        <i class="fa-solid fa-plus"></i> Nouvelle Demande
+      </button>
+
+      <div class="section-title" style="font-size:18px;margin-bottom:16px;">
+        <i class="fa-solid fa-clock-rotate-left" style="color:var(--blue);"></i> Mes Demandes
+      </div>
+
+      <div id="userRequestsList"></div>
+    </div>
+  </div>
+  <nav class="navbar">
+    <button class="nav-item active" onclick="navigateTo('pageDashboard')">
+      <i class="fa-solid fa-house"></i><span>Accueil</span>
+    </button>
+    <button class="nav-item" onclick="navigateTo('pageForm')">
+      <i class="fa-solid fa-file-circle-plus"></i><span>Demande</span>
+    </button>
+    <button class="nav-item" onclick="window.open('https://wa.me/2250554166574','_blank')">
+      <i class="fa-brands fa-whatsapp"></i><span>Support</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ============ PAGE: FORM ============ -->
+<div class="page" id="pageForm">
+  <div style="padding:16px 0;">
+    <div class="container">
+      <button onclick="navigateTo('pageDashboard')" style="background:none;border:none;color:var(--text-secondary);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;margin-bottom:12px;">
+        <i class="fa-solid fa-arrow-left"></i> Retour au tableau de bord
+      </button>
+      <h2 class="section-title">Nouvelle Demande</h2>
+      <p class="section-subtitle">Remplissez le formulaire étape par étape</p>
+
+      <div class="step-indicator">
+        <div class="step-dot active" id="stepDot1">1</div>
+        <div class="step-line" id="stepLine1"></div>
+        <div class="step-dot" id="stepDot2">2</div>
+        <div class="step-line" id="stepLine2"></div>
+        <div class="step-dot" id="stepDot3">3</div>
+        <div class="step-line" id="stepLine3"></div>
+        <div class="step-dot" id="stepDot4">4</div>
+      </div>
+
+      <!-- Step 1: Personal Info -->
+      <div id="formStep1" class="card">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:16px;">
+          <i class="fa-solid fa-user" style="color:var(--blue);"></i> Informations personnelles
+        </h3>
+        <div class="form-group">
+          <label class="form-label">Nom et Prénom</label>
+          <input type="text" class="form-input" id="fNom" placeholder="Ex: Kouadio Jean">
+          <div class="form-error" id="fNomErr">Ce champ est obligatoire</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Âge</label>
+          <input type="number" class="form-input" id="fAge" placeholder="Ex: 28" min="18" max="99">
+          <div class="form-error" id="fAgeErr">Veuillez entrer un âge valide (18-99)</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pays</label>
+          <input type="text" class="form-input" id="fPays" placeholder="Ex: Côte d'Ivoire">
+          <div class="form-error" id="fPaysErr">Ce champ est obligatoire</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ville / Région</label>
+          <input type="text" class="form-input" id="fVille" placeholder="Ex: Abidjan">
+          <div class="form-error" id="fVilleErr">Ce champ est obligatoire</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Niveau d'étude</label>
+          <select class="form-select" id="fNiveau">
+            <option value="">-- Sélectionnez --</option>
+            <option value="Primaire">Primaire</option>
+            <option value="Secondaire">Secondaire (Collège / Lycée)</option>
+            <option value="Universitaire">Universitaire (Licence / Master)</option>
+            <option value="Doctorat">Doctorat</option>
+            <option value="Formation professionnelle">Formation professionnelle</option>
+            <option value="Autre">Autre</option>
+          </select>
+          <div class="form-error" id="fNiveauErr">Veuillez sélectionner votre niveau</div>
+        </div>
+        <button class="btn btn-blue" onclick="nextStep(1)">
+          Suivant <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Step 2: Category -->
+      <div id="formStep2" class="card" style="display:none;">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:6px;">
+          <i class="fa-solid fa-layer-group" style="color:var(--blue);"></i> Catégorie du projet
+        </h3>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+          Sélectionnez la catégorie qui correspond à votre besoin
+        </p>
+        <div class="category-cards" id="categoryCards">
+          <!-- Travail -->
+          <div class="category-card" onclick="selectCategory(this,'Travail / Projet professionnel')" data-cat="Travail / Projet professionnel">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#E8F0FE"/>
+              <rect x="40" y="60" width="120" height="100" rx="4" fill="#1A5DAB"/>
+              <rect x="50" y="40" width="100" height="30" rx="4" fill="#0E3F7A"/>
+              <rect x="55" y="75" width="25" height="20" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="88" y="75" width="25" height="20" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="120" y="75" width="25" height="20" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="55" y="105" width="25" height="20" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="88" y="105" width="25" height="20" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="120" y="105" width="25" height="20" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="85" y="135" width="30" height="25" rx="2" fill="#FFD700"/>
+              <rect x="60" y="155" width="80" height="5" fill="#0E3F7A"/>
+            </svg>
+            <div class="category-label">💼 Travail / Projet pro</div>
+            <div class="category-check"><i class="fa-solid fa-check"></i></div>
+          </div>
+          <!-- Études -->
+          <div class="category-card" onclick="selectCategory(this,'Études')" data-cat="Études">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#FEF3C7"/>
+              <rect x="30" y="80" width="140" height="80" rx="4" fill="#B45309"/>
+              <polygon points="100,30 160,65 40,65" fill="#C8102E"/>
+              <rect x="92" y="50" width="16" height="30" fill="#92400E"/>
+              <circle cx="100" cy="45" r="8" fill="#FFD700"/>
+              <rect x="45" y="95" width="20" height="25" rx="2" fill="#FFFFFF" opacity="0.85"/>
+              <rect x="75" y="95" width="20" height="25" rx="2" fill="#FFFFFF" opacity="0.85"/>
+              <rect x="105" y="95" width="20" height="25" rx="2" fill="#FFFFFF" opacity="0.85"/>
+              <rect x="135" y="95" width="20" height="25" rx="2" fill="#FFFFFF" opacity="0.85"/>
+              <rect x="80" y="130" width="40" height="30" rx="2" fill="#FFD700"/>
+              <line x1="30" y1="160" x2="170" y2="160" stroke="#92400E" stroke-width="4"/>
+            </svg>
+            <div class="category-label">🎓 Études</div>
+            <div class="category-check"><i class="fa-solid fa-check"></i></div>
+          </div>
+          <!-- Commerce -->
+          <div class="category-card" onclick="selectCategory(this,'Commerce')" data-cat="Commerce">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#D1FAE5"/>
+              <rect x="25" y="70" width="150" height="90" rx="4" fill="#16A34A"/>
+              <rect x="25" y="55" width="150" height="20" rx="4" fill="#0E7A3A"/>
+              <rect x="40" y="85" width="35" height="45" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="82" y="85" width="35" height="45" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="125" y="85" width="35" height="45" rx="2" fill="#FFFFFF" opacity="0.9"/>
+              <rect x="75" y="140" width="50" height="20" rx="2" fill="#FFD700"/>
+              <circle cx="100" cy="40" r="12" fill="#FF6347" opacity="0.8"/>
+              <text x="100" y="44" text-anchor="middle" fill="white" font-size="12" font-weight="bold">%</text>
+            </svg>
+            <div class="category-label">🏪 Commerce</div>
+            <div class="category-check"><i class="fa-solid fa-check"></i></div>
+          </div>
+          <!-- Voyage -->
+          <div class="category-card" onclick="selectCategory(this,'Voyage au Canada pour le travail')" data-cat="Voyage au Canada pour le travail">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#EDE9FE"/>
+              <rect x="20" y="110" width="160" height="50" rx="4" fill="#6B7280"/>
+              <rect x="30" y="100" width="140" height="15" rx="2" fill="#9CA3AF"/>
+              <rect x="50" y="90" width="100" height="15" rx="8" fill="#E5E7EB"/>
+              <path d="M100,30 L130,80 L140,80 L140,95 L60,95 L60,80 L70,80 Z" fill="#FFFFFF"/>
+              <circle cx="80" cy="70" r="6" fill="#87CEEB"/>
+              <circle cx="120" cy="70" r="6" fill="#87CEEB"/>
+              <path d="M85,55 L100,35 L115,55" fill="none" stroke="#C8102E" stroke-width="3"/>
+              <rect x="90" y="120" width="20" height="30" rx="2" fill="#FFD700"/>
+              <rect x="35" y="130" width="15" height="8" rx="1" fill="#FFFFFF" opacity="0.5"/>
+              <rect x="150" y="130" width="15" height="8" rx="1" fill="#FFFFFF" opacity="0.5"/>
+              <rect x="20" y="155" width="160" height="5" fill="#4B5563"/>
+            </svg>
+            <div class="category-label">✈️ Voyage au Canada</div>
+            <div class="category-check"><i class="fa-solid fa-check"></i></div>
+          </div>
+        </div>
+        <div class="form-error" id="fCatErr" style="text-align:center;margin-top:8px;">Veuillez sélectionner une catégorie</div>
+        <div style="height:16px;"></div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-sm" onclick="prevStep(2)">
+            <i class="fa-solid fa-arrow-left"></i> Retour
+          </button>
+          <button class="btn btn-blue btn-sm" onclick="nextStep(2)">
+            Suivant <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Description -->
+      <div id="formStep3" class="card" style="display:none;">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:16px;">
+          <i class="fa-solid fa-pen-to-square" style="color:var(--blue);"></i> Description du projet
+        </h3>
+        <div class="form-group">
+          <label class="form-label">Décrivez votre projet / besoin</label>
+          <textarea class="form-textarea" id="fDescription" placeholder="Expliquez en détail votre projet, vos objectifs et pourquoi vous avez besoin de cette aide financière..."></textarea>
+          <div class="form-error" id="fDescErr">Veuillez décrire votre projet (min. 20 caractères)</div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-sm" onclick="prevStep(3)">
+            <i class="fa-solid fa-arrow-left"></i> Retour
+          </button>
+          <button class="btn btn-blue btn-sm" onclick="nextStep(3)">
+            Suivant <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Payment -->
+      <div id="formStep4" class="card" style="display:none;">
+        <h3 style="font-size:17px;font-weight:700;margin-bottom:6px;">
+          <i class="fa-solid fa-credit-card" style="color:var(--blue);"></i> Paiement
+        </h3>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:16px;">
+          Sélectionnez le montant demandé puis effectuez le paiement des frais
+        </p>
+
+        <label class="form-label">Montant souhaité (FCFA)</label>
+        <div class="amount-grid" id="amountGrid"></div>
+        <div class="form-error" id="fAmountErr" style="margin-top:8px;">Veuillez sélectionner un montant</div>
+
+        <div class="payment-info" id="paymentInfoBox" style="display:none;">
+          <h4><i class="fa-solid fa-info-circle"></i> Frais de traitement : <strong id="feeDisplay"></strong> FCFA</h4>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">Envoyez les frais au numéro ci-dessous :</p>
+          <div class="payment-number">
+            <span id="paymentNum">+225 07 00 00 00 00</span>
+            <button class="copy-btn" onclick="copyPaymentNum()"><i class="fa-solid fa-copy"></i> Copier</button>
+          </div>
+        </div>
+
+        <div id="paymentFields" style="display:none;">
+          <div class="form-group">
+            <label class="form-label">Numéro utilisé pour le paiement</label>
+            <input type="text" class="form-input" id="fPayPhone" placeholder="+225 XX XX XX XX XX">
+            <div class="form-error" id="fPayPhoneErr">Ce champ est obligatoire</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ID de transaction</label>
+            <input type="text" class="form-input" id="fTransId" placeholder="Ex: TXN123456789">
+            <div class="form-error" id="fTransIdErr">Ce champ est obligatoire</div>
+          </div>
+        </div>
+
+        <div style="height:12px;"></div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-sm" onclick="prevStep(4)">
+            <i class="fa-solid fa-arrow-left"></i> Retour
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="submitRequest()">
+            <i class="fa-solid fa-paper-plane"></i> Envoyer la demande
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE: ADMIN LOGIN ============ -->
+<div class="page" id="pageAdminLogin">
+  <div style="padding:40px 0;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:30px;">
+        <div style="width:64px;height:64px;margin:0 auto 16px;background:linear-gradient(135deg,var(--gray-800),var(--gray-900));border-radius:16px;display:flex;align-items:center;justify-content:center;">
+          <i class="fa-solid fa-shield-halved" style="font-size:28px;color:var(--red);"></i>
+        </div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:24px;">Administration</h2>
+        <p style="font-size:14px;color:var(--text-secondary);margin-top:6px;">Accès réservé aux administrateurs</p>
+      </div>
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label">Code Administrateur</label>
+          <input type="password" class="form-input" id="adminCode" placeholder="Entrez le code admin">
+          <div class="form-error" id="adminCodeErr">Code incorrect</div>
+        </div>
+        <button class="btn btn-primary" onclick="handleAdminLogin()">
+          <i class="fa-solid fa-lock-open"></i> Connexion Admin
+        </button>
+      </div>
+      <button class="btn btn-outline" style="margin-top:12px;" onclick="navigateTo('pageWelcome')">
+        <i class="fa-solid fa-arrow-left"></i> Retour à l'accueil
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE: ADMIN DASHBOARD ============ -->
+<div class="page" id="pageAdmin">
+  <div style="background:linear-gradient(135deg,var(--gray-900),#1a1a2e);padding:20px;color:white;">
+    <div class="container">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:22px;">Admin CANFIN</h2>
+          <p style="font-size:13px;opacity:0.7;">Tableau de bord</p>
+        </div>
+        <button onclick="handleAdminLogout()" style="background:rgba(255,255,255,0.1);border:none;color:white;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">
+          <i class="fa-solid fa-right-from-bracket"></i> Quitter
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="container" style="padding-top:16px;">
+      <div class="admin-stats" id="adminStats">
+        <div class="stat-card pending">
+          <div class="stat-num" id="statPending">0</div>
+          <div class="stat-label">En attente</div>
+        </div>
+        <div class="stat-card accepted">
+          <div class="stat-num" id="statAccepted">0</div>
+          <div class="stat-label">Acceptées</div>
+        </div>
+        <div class="stat-card refused">
+          <div class="stat-num" id="statRefused">0</div>
+          <div class="stat-label">Refusées</div>
+        </div>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" id="adminTabAll" onclick="filterAdminRequests('all')">Toutes</button>
+        <button class="tab-btn" id="adminTabPending" onclick="filterAdminRequests('pending')">En attente</button>
+        <button class="tab-btn" id="adminTabDone" onclick="filterAdminRequests('done')">Traitées</button>
+      </div>
+
+      <div id="adminRequestsList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================
+   DATA STORE (in-memory)
+   ============================ */
+const DB = {
+  users: [],
+  requests: [],
+  currentUser: null,
+  isAdmin: false
+};
+
+const ADMIN_CODE = '14228372Cc';
+const COMPANY_PAY_NUM = '+225 05 54 16 65 74';
+
+const AMOUNTS = [
+  { label: '55 000 F', value: 55000, fee: 5500 },
+  { label: '90 000 F', value: 90000, fee: 5500 },
+  { label: '110 000 F', value: 110000, fee: 15000 },
+  { label: '200 000 F', value: 200000, fee: 15000 },
+  { label: '300 000 F', value: 300000, fee: 15000 },
+  { label: '400 000 F', value: 400000, fee: 20000 },
+  { label: '600 000 F', value: 600000, fee: 20000 },
+  { label: '900 000 F', value: 900000, fee: 20000 },
+  { label: '1 000 000 F', value: 1000000, fee: 35000 },
+  { label: '1 500 000 F', value: 1500000, fee: 35000 },
+  { label: '2 000 000 F', value: 2000000, fee: 35000 }
+];
+
+/* ============================
+   DARK MODE
+   ============================ */
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.documentElement.classList.add('dark');
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(event) {
+  if (event.matches) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+});
+
+/* ============================
+   NAVIGATION
+   ============================ */
+function navigateTo(pageId) {
+  var pages = document.querySelectorAll('.page');
+  for (var i = 0; i < pages.length; i++) {
+    pages[i].classList.remove('active');
+  }
+  var target = document.getElementById(pageId);
+  if (target) { target.classList.add('active'); }
+  window.scrollTo(0, 0);
+
+  if (pageId === 'pageDashboard') { renderUserRequests(); }
+  if (pageId === 'pageAdmin') { renderAdminRequests(); }
+  if (pageId === 'pageForm') { resetForm(); }
+}
+
+/* ============================
+   TOAST
+   ============================ */
+function showToast(message, type) {
+  type = type || 'info';
+  var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+  var color = type === 'success' ? '#16A34A' : type === 'error' ? '#C8102E' : '#1A5DAB';
+  var toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  toast.innerHTML = '<i class="fa-solid ' + icon + '" style="color:' + color + ';font-size:18px;"></i><span>' + message + '</span>';
+  var container = document.getElementById('toastContainer');
+  container.appendChild(toast);
+  setTimeout(function() { toast.style.opacity = '0'; toast.style.transform = 'translateX(30px)'; toast.style.transition = 'all 0.3s ease'; }, 3000);
+  setTimeout(function() { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 3500);
+}
+
+/* ============================
+   MODAL
+   ============================ */
+function showModal(title, message, buttons) {
+  var overlay = document.getElementById('modalOverlay');
+  var content = document.getElementById('modalContent');
+  var btnHtml = '';
+  for (var i = 0; i < buttons.length; i++) {
+    var b = buttons[i];
+    btnHtml += '<button class="btn ' + (b.cls || 'btn-primary') + ' btn-sm" style="margin:4px;" onclick="' + b.action + '">' + b.label + '</button>';
+  }
+  content.innerHTML = '<h3>' + title + '</h3><p>' + message + '</p><div style="display:flex;justify-content:center;flex-wrap:wrap;">' + btnHtml + '</div>';
+  overlay.classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+/* ============================
+   AUTH
+   ============================ */
+function switchAuthTab(tab) {
+  var btns = document.querySelectorAll('.tab-bar .tab-btn');
+  for (var i = 0; i < btns.length; i++) { btns[i].classList.remove('active'); }
+  if (tab === 'login') {
+    btns[0].classList.add('active');
+    document.getElementById('authLogin').style.display = 'block';
+    document.getElementById('authRegister').style.display = 'none';
+  } else {
+    btns[1].classList.add('active');
+    document.getElementById('authLogin').style.display = 'none';
+    document.getElementById('authRegister').style.display = 'block';
+  }
+}
+
+function handleRegister() {
+  var email = document.getElementById('regEmail').value.trim();
+  var pass = document.getElementById('regPassword').value;
+  var passC = document.getElementById('regPasswordConfirm').value;
+  var valid = true;
+  hideError('regEmailErr'); hideError('regPasswordErr'); hideError('regPasswordConfirmErr');
+  if (!email) { showError('regEmailErr', 'Ce champ est obligatoire'); valid = false; }
+  if (pass.length < 6) { showError('regPasswordErr', 'Minimum 6 caractères requis'); valid = false; }
+  if (pass !== passC) { showError('regPasswordConfirmErr', 'Les mots de passe ne correspondent pas'); valid = false; }
+  if (!valid) return;
+  var exists = DB.users.some(function(u) { return u.email === email; });
+  if (exists) { showError('regEmailErr', 'Ce compte existe déjà'); return; }
+  DB.users.push({ email: email, password: pass });
+  showToast('Compte créé avec succès !', 'success');
+  DB.currentUser = email;
+  updateDashboardHeader();
+  navigateTo('pageDashboard');
+}
+
+function handleLogin() {
+  var email = document.getElementById('loginEmail').value.trim();
+  var pass = document.getElementById('loginPassword').value;
+  var valid = true;
+  hideError('loginEmailErr'); hideError('loginPasswordErr');
+  if (!email) { showError('loginEmailErr', 'Ce champ est obligatoire'); valid = false; }
+  if (!pass) { showError('loginPasswordErr', 'Ce champ est obligatoire'); valid = false; }
+  if (!valid) return;
+  var user = DB.users.find(function(u) { return u.email === email && u.password === pass; });
+  if (!user) { showError('loginPasswordErr', 'Email/téléphone ou mot de passe incorrect'); return; }
+  DB.currentUser = email;
+  showToast('Connexion réussie !', 'success');
+  updateDashboardHeader();
+  navigateTo('pageDashboard');
+}
+
+function handleLogout() {
+  DB.currentUser = null;
+  showToast('Déconnexion réussie', 'info');
+  navigateTo('pageWelcome');
+}
+
+function updateDashboardHeader() {
+  if (!DB.currentUser) return;
+  var initial = DB.currentUser.charAt(0).toUpperCase();
+  document.getElementById('dashAvatar').textContent = initial;
+  document.getElementById('dashUserName').textContent = DB.currentUser;
+  document.getElementById('dashUserEmail').textContent = DB.currentUser;
+}
+
+/* ============================
+   FORM ERRORS
+   ============================ */
+function showError(id, msg) {
+  var el = document.getElementById(id);
+  if (el) { if (msg) el.textContent = msg; el.classList.add('visible'); }
+}
+function hideError(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.remove('visible');
+}
+
+/* ============================
+   MULTI-STEP FORM
+   ============================ */
+var currentStep = 1;
+var selectedCategory = '';
+var selectedAmount = null;
+
+function resetForm() {
+  currentStep = 1;
+  selectedCategory = '';
+  selectedAmount = null;
+  var ids = ['fNom','fAge','fPays','fVille','fDescription','fPayPhone','fTransId'];
+  for (var i = 0; i < ids.length; i++) {
+    var el = document.getElementById(ids[i]);
+    if (el) el.value = '';
+  }
+  document.getElementById('fNiveau').selectedIndex = 0;
+  var cards = document.querySelectorAll('.category-card');
+  for (var j = 0; j < cards.length; j++) { cards[j].classList.remove('selected'); }
+  var amtOpts = document.querySelectorAll('.amount-option');
+  for (var k = 0; k < amtOpts.length; k++) { amtOpts[k].classList.remove('selected'); }
+  document.getElementById('paymentInfoBox').style.display = 'none';
+  document.getElementById('paymentFields').style.display = 'none';
+  updateStepUI();
+}
+
+function updateStepUI() {
+  for (var s = 1; s <= 4; s++) {
+    var stepEl = document.getElementById('formStep' + s);
+    if (stepEl) stepEl.style.display = (s === currentStep) ? 'block' : 'none';
+    var dotEl = document.getElementById('stepDot' + s);
+    if (dotEl) {
+      dotEl.classList.remove('active', 'done');
+      if (s < currentStep) {
+        dotEl.classList.add('done');
+        dotEl.innerHTML = '<i class="fa-solid fa-check" style="font-size:12px;"></i>';
+      } else if (s === currentStep) {
+        dotEl.classList.add('active');
+        dotEl.textContent = s;
+      } else {
+        dotEl.textContent = s;
+      }
+    }
+    if (s < 4) {
+      var lineEl = document.getElementById('stepLine' + s);
+      if (lineEl) {
+        lineEl.classList.remove('done');
+        if (s < currentStep) lineEl.classList.add('done');
+      }
+    }
+  }
+}
+
+function nextStep(from) {
+  if (from === 1) {
+    var valid = true;
+    hideError('fNomErr'); hideError('fAgeErr'); hideError('fPaysErr'); hideError('fVilleErr'); hideError('fNiveauErr');
+    if (!document.getElementById('fNom').value.trim()) { showError('fNomErr'); valid = false; }
+    var age = parseInt(document.getElementById('fAge').value, 10);
+    if (isNaN(age) || age < 18 || age > 99) { showError('fAgeErr'); valid = false; }
+    if (!document.getElementById('fPays').value.trim()) { showError('fPaysErr'); valid = false; }
+    if (!document.getElementById('fVille').value.trim()) { showError('fVilleErr'); valid = false; }
+    if (!document.getElementById('fNiveau').value) { showError('fNiveauErr'); valid = false; }
+    if (!valid) return;
+  }
+  if (from === 2) {
+    hideError('fCatErr');
+    if (!selectedCategory) { showError('fCatErr'); return; }
+  }
+  if (from === 3) {
+    hideError('fDescErr');
+    if (document.getElementById('fDescription').value.trim().length < 20) { showError('fDescErr'); return; }
+  }
+  currentStep = from + 1;
+  updateStepUI();
+  window.scrollTo(0, 0);
+}
+
+function prevStep(from) {
+  currentStep = from - 1;
+  updateStepUI();
+  window.scrollTo(0, 0);
+}
+
+function selectCategory(el, cat) {
+  var cards = document.querySelectorAll('.category-card');
+  for (var i = 0; i < cards.length; i++) { cards[i].classList.remove('selected'); }
+  el.classList.add('selected');
+  selectedCategory = cat;
+  hideError('fCatErr');
+}
+
+/* ============================
+   AMOUNTS
+   ============================ */
+function buildAmountGrid() {
+  var grid = document.getElementById('amountGrid');
+  var html = '';
+  for (var i = 0; i < AMOUNTS.length; i++) {
+    var a = AMOUNTS[i];
+    html += '<div class="amount-option" onclick="selectAmount(' + i + ', this)" data-idx="' + i + '">';
+    html += '<div class="amount">' + a.label + '</div>';
+    html += '<div class="fee">Frais : ' + formatNum(a.fee) + ' F</div>';
+    html += '</div>';
+  }
+  grid.innerHTML = html;
+}
+
+function selectAmount(idx, el) {
+  var opts = document.querySelectorAll('.amount-option');
+  for (var i = 0; i < opts.length; i++) { opts[i].classList.remove('selected'); }
+  el.classList.add('selected');
+  selectedAmount = AMOUNTS[idx];
+  hideError('fAmountErr');
+  document.getElementById('paymentInfoBox').style.display = 'block';
+  document.getElementById('paymentFields').style.display = 'block';
+  document.getElementById('feeDisplay').textContent = formatNum(selectedAmount.fee);
+  document.getElementById('paymentNum').textContent = COMPANY_PAY_NUM;
+}
+
+function formatNum(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+function copyPaymentNum() {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(COMPANY_PAY_NUM.replace(/\s/g, '')).then(function() {
+      showToast('Numéro copié !', 'success');
+    });
+  }
+}
+
+/* ============================
+   SUBMIT REQUEST
+   ============================ */
+function submitRequest() {
+  var valid = true;
+  hideError('fAmountErr'); hideError('fPayPhoneErr'); hideError('fTransIdErr');
+  if (!selectedAmount) { showError('fAmountErr'); valid = false; }
+  if (!document.getElementById('fPayPhone').value.trim()) { showError('fPayPhoneErr'); valid = false; }
+  if (!document.getElementById('fTransId').value.trim()) { showError('fTransIdErr'); valid = false; }
+  if (!valid) return;
+
+  var req = {
+    id: 'REQ-' + Date.now(),
+    userEmail: DB.currentUser,
+    nom: document.getElementById('fNom').value.trim(),
+    age: document.getElementById('fAge').value,
+    pays: document.getElementById('fPays').value.trim(),
+    ville: document.getElementById('fVille').value.trim(),
+    niveau: document.getElementById('fNiveau').value,
+    categorie: selectedCategory,
+    description: document.getElementById('fDescription').value.trim(),
+    montant: selectedAmount.label,
+    montantVal: selectedAmount.value,
+    frais: selectedAmount.fee,
+    payPhone: document.getElementById('fPayPhone').value.trim(),
+    transId: document.getElementById('fTransId').value.trim(),
+    status: 'pending',
+    date: new Date().toLocaleDateString('fr-FR')
+  };
+  DB.requests.push(req);
+  showToast('Demande envoyée avec succès !', 'success');
+  navigateTo('pageDashboard');
+}
+
+/* ============================
+   RENDER USER REQUESTS
+   ============================ */
+function renderUserRequests() {
+  var container = document.getElementById('userRequestsList');
+  var userReqs = DB.requests.filter(function(r) { return r.userEmail === DB.currentUser; });
+
+  if (userReqs.length === 0) {
+    container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-inbox"></i><h4>Aucune demande</h4><p>Créez votre première demande d\'aide financière</p></div>';
+    return;
+  }
+
+  var html = '';
+  for (var i = userReqs.length - 1; i >= 0; i--) {
+    var r = userReqs[i];
+    var statusClass = r.status === 'pending' ? 'status-pending' : r.status === 'accepted' ? 'status-accepted' : 'status-refused';
+    var statusText = r.status === 'pending' ? '⏳ Demande en cours de traitement' : r.status === 'accepted' ? '✅ Demande acceptée' : '❌ Demande refusée';
+    html += '<div class="card" style="margin-bottom:12px;">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">';
+    html += '<div><strong>' + escapeHtml(r.nom) + '</strong><br><span style="font-size:12px;color:var(--text-secondary);">' + escapeHtml(r.date) + ' • ' + escapeHtml(r.id) + '</span></div>';
+    html += '</div>';
+    html += '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">';
+    html += '<span style="font-size:11px;padding:3px 10px;border-radius:50px;background:var(--bg-input);border:1px solid var(--border-color);color:var(--text-secondary);">' + escapeHtml(r.categorie) + '</span>';
+    html += '<span style="font-size:11px;padding:3px 10px;border-radius:50px;background:var(--bg-input);border:1px solid var(--border-color);color:var(--text-secondary);">' + escapeHtml(r.montant) + '</span>';
+    html += '</div>';
+    html += '<div class="status-badge ' + statusClass + '">' + statusText + '</div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+/* ============================
+   ADMIN
+   ============================ */
+function handleAdminLogin() {
+  var code = document.getElementById('adminCode').value;
+  hideError('adminCodeErr');
+  if (code !== ADMIN_CODE) { showError('adminCodeErr', 'Code incorrect'); return; }
+  DB.isAdmin = true;
+  showToast('Bienvenue, Administrateur', 'success');
+  navigateTo('pageAdmin');
+}
+
+function handleAdminLogout() {
+  DB.isAdmin = false;
+  document.getElementById('adminCode').value = '';
+  navigateTo('pageWelcome');
+}
+
+var adminFilter = 'all';
+
+function filterAdminRequests(filter) {
+  adminFilter = filter;
+  var tabs = document.querySelectorAll('#pageAdmin .tab-btn');
+  for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('active'); }
+  document.getElementById('adminTab' + (filter === 'all' ? 'All' : filter === 'pending' ? 'Pending' : 'Done')).classList.add('active');
+  renderAdminRequests();
+}
+
+function renderAdminRequests() {
+  var container = document.getElementById('adminRequestsList');
+  var pending = 0;
+  var accepted = 0;
+  var refused = 0;
+  for (var x = 0; x < DB.requests.length; x++) {
+    if (DB.requests[x].status === 'pending') pending++;
+    else if (DB.requests[x].status === 'accepted') accepted++;
+    else refused++;
+  }
+  document.getElementById('statPending').textContent = pending;
+  document.getElementById('statAccepted').textContent = accepted;
+  document.getElementById('statRefused').textContent = refused;
+
+  var filtered = DB.requests.filter(function(r) {
+    if (adminFilter === 'pending') return r.status === 'pending';
+    if (adminFilter === 'done') return r.status !== 'pending';
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-folder-open"></i><h4>Aucune demande</h4><p>Il n\'y a aucune demande dans cette catégorie</p></div>';
+    return;
+  }
+
+  var html = '';
+  for (var i = filtered.length - 1; i >= 0; i--) {
+    var r = filtered[i];
+    var statusClass = r.status === 'pending' ? 'status-pending' : r.status === 'accepted' ? 'status-accepted' : 'status-refused';
+    var statusLabel = r.status === 'pending' ? '⏳ En attente' : r.status === 'accepted' ? '✅ Acceptée' : '❌ Refusée';
+    html += '<div class="admin-request">';
+    html += '<h4>' + escapeHtml(r.nom) + ' <span style="font-weight:400;font-size:13px;color:var(--text-secondary);">(' + escapeHtml(r.age) + ' ans)</span></h4>';
+    html += '<p><i class="fa-solid fa-location-dot" style="width:14px;"></i> ' + escapeHtml(r.ville) + ', ' + escapeHtml(r.pays) + '</p>';
+    html += '<p><i class="fa-solid fa-envelope" style="width:14px;"></i> ' + escapeHtml(r.userEmail) + '</p>';
+    html += '<div class="req-detail">';
+    html += '<span class="tag">' + escapeHtml(r.categorie) + '</span>';
+    html += '<span class="tag">' + escapeHtml(r.niveau) + '</span>';
+    html += '<span class="tag"><strong>' + escapeHtml(r.montant) + '</strong></span>';
+    html += '<span class="tag">Frais: ' + formatNum(r.frais) + ' F</span>';
+    html += '</div>';
+    html += '<p style="font-size:13px;margin:6px 0;"><strong>Projet :</strong> ' + escapeHtml(r.description).substring(0, 120) + (r.description.length > 120 ? '...' : '') + '</p>';
+    html += '<p style="font-size:12px;color:var(--text-secondary);"><strong>Paiement :</strong> ' + escapeHtml(r.payPhone) + ' | TXN : ' + escapeHtml(r.transId) + '</p>';
+    html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">';
+    html += '<span class="status-badge ' + statusClass + '" style="font-size:12px;padding:5px 12px;">' + statusLabel + '</span>';
+    if (r.status === 'pending') {
+      html += '<div style="display:flex;gap:6px;">';
+      html += '<button class="btn btn-accept btn-sm" style="padding:8px 14px;font-size:12px;width:auto;" onclick="updateRequestStatus(\'' + r.id + '\',\'accepted\')"><i class="fa-solid fa-check"></i> Accepter</button>';
+      html += '<button class="btn btn-refuse btn-sm" style="padding:8px 14px;font-size:12px;width:auto;" onclick="updateRequestStatus(\'' + r.id + '\',\'refused\')"><i class="fa-solid fa-times"></i> Refuser</button>';
+      html += '</div>';
+    }
+    html += '</div>';
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
+function updateRequestStatus(reqId, status) {
+  var action = status === 'accepted' ? 'accepter' : 'refuser';
+  showModal(
+    (status === 'accepted' ? '✅' : '❌') + ' Confirmer',
+    'Voulez-vous vraiment <strong>' + action + '</strong> cette demande ?',
+    [
+      { label: 'Annuler', cls: 'btn-outline', action: 'closeModal()' },
+      { label: 'Confirmer', cls: status === 'accepted' ? 'btn-accept' : 'btn-refuse', action: 'confirmStatusUpdate(\'' + reqId + '\',\'' + status + '\')' }
+    ]
+  );
+}
+
+function confirmStatusUpdate(reqId, status) {
+  closeModal();
+  for (var i = 0; i < DB.requests.length; i++) {
+    if (DB.requests[i].id === reqId) {
+      DB.requests[i].status = status;
+      break;
+    }
+  }
+  var msg = status === 'accepted' ? 'Demande acceptée' : 'Demande refusée';
+  showToast(msg, status === 'accepted' ? 'success' : 'error');
+  renderAdminRequests();
+}
+
+/* ============================
+   UTILS
+   ============================ */
+function escapeHtml(str) {
+  if (!str) return '';
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+/* ============================
+   PWA INSTALL
+   ============================ */
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(choiceResult) {
+      if (choiceResult.outcome === 'accepted') {
+        showToast('Application installée !', 'success');
+      }
+      deferredPrompt = null;
+    });
+  } else {
+    showModal(
+      '📲 Installer CANFIN',
+      '<strong>Android (Chrome) :</strong> Appuyez sur le menu ⋮ puis "Installer l\'application" ou "Ajouter à l\'écran d\'accueil".<br><br><strong>iOS (Safari) :</strong> Appuyez sur <i class="fa-solid fa-arrow-up-from-bracket"></i> puis "Sur l\'écran d\'accueil".<br><br><strong>PC :</strong> Cliquez sur l\'icône d\'installation dans la barre d\'adresse.',
+      [{ label: 'Compris', cls: 'btn-blue', action: 'closeModal()' }]
+    );
+  }
+}
+
+/* ============================
+   SERVICE WORKER (inline registration)
+   ============================ */
+if ('serviceWorker' in navigator) {
+  var swCode = "self.addEventListener('install',function(e){self.skipWaiting();});self.addEventListener('activate',function(e){e.waitUntil(clients.claim());});self.addEventListener('fetch',function(e){e.respondWith(fetch(e.request).catch(function(){return new Response('<html><body style=\"text-align:center;padding:60px;font-family:sans-serif;\"><h2>CANFIN - Hors connexion</h2><p>Veuillez vérifier votre connexion internet.</p></body></html>',{headers:{\"Content-Type\":\"text/html\"}});}));});";
+  var swBlob = new Blob([swCode], { type: 'application/javascript' });
+  var swUrl = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl).catch(function() {
+    /* SW registration failed — expected in some iframe environments */
+  });
+}
+
+/* ============================
+   INIT
+   ============================ */
+buildAmountGrid();
+</script>
+</body>
+</html>
+
